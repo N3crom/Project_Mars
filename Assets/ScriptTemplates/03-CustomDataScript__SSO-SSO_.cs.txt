@@ -1,0 +1,4 @@
+using UnityEngine;
+
+[CreateAssetMenu(fileName = "#SCRIPTNAME#", menuName = "Data/SSO/#SCRIPTNAME#")]
+public class #SCRIPTNAME# : StaticScriptableObject<>{}
