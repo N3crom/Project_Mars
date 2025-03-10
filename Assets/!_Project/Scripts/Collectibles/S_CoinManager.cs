@@ -16,6 +16,10 @@ public class S_CoinManager : MonoBehaviour
 
     //[Header("SSO")]
 
+    void Awake()
+    {
+        _rsoCurrentCoinHave.Value = 0;
+    }
     private void OnEnable()
     {
         _rseOnCoinCollected.action += AddCoin;
