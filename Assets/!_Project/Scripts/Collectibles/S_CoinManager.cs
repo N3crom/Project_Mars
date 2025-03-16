@@ -13,12 +13,14 @@ public class S_CoinManager : MonoBehaviour
     [Header("RSO")]
     [SerializeField] RSO_CurrentCoinHave _rsoCurrentCoinHave;
     [SerializeField] RSO_CoinInArea _coinsInTheArea;
+    [SerializeField] RSO_AllCoinCollected _allcoinCollected ;
 
     //[Header("SSO")]
 
     void Awake()
     {
         _rsoCurrentCoinHave.Value = 0;
+        _allcoinCollected.Value = false;
     }
     private void OnEnable()
     {
@@ -43,6 +45,8 @@ public class S_CoinManager : MonoBehaviour
         {
             _rseAllCoinCollected.RaiseEvent();
             Debug.Log("All coins collected!");
+
+            _allcoinCollected.Value = true;
         }
         else
         {

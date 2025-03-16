@@ -48,3 +48,4 @@ MonoBehaviour:
   _rseAllCoinCollected: {fileID: 11400000, guid: 75528e88c394df6468f2ab128243c90e, type: 2}
   _rsoCurrentCoinHave: {fileID: 11400000, guid: e48942113a6ed1d40901222ac2c4fd31, type: 2}
   _coinsInTheArea: {fileID: 11400000, guid: 53639c865d762ba418c6923a22d48bb7, type: 2}
+  _allcoinCollected: {fileID: 11400000, guid: bf0ecd1d951709a4c866f1a231644811, type: 2}

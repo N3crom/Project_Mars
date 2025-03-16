@@ -579,6 +579,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _coinText: {fileID: 6701815274850324759}
+  _winPanel: {fileID: 3677776846244970437}
+  _rseAllCoinCollected: {fileID: 11400000, guid: 75528e88c394df6468f2ab128243c90e, type: 2}
+  _rseOnLevelFinish: {fileID: 11400000, guid: 390c0e82e60157d4a8e522ac8610e6d9, type: 2}
   _rsoCurrentCoinHave: {fileID: 11400000, guid: e48942113a6ed1d40901222ac2c4fd31, type: 2}
   _rsoCoinsInTheArea: {fileID: 11400000, guid: 53639c865d762ba418c6923a22d48bb7, type: 2}
   _rsoTotalCoinsInArea: {fileID: 11400000, guid: 393460af3044cbd43a31e63521fb227b, type: 2}

@@ -7,8 +7,11 @@ public class S_UiManager : MonoBehaviour
 
     [Header("References")]
     [SerializeField] TextMeshProUGUI _coinText;
+    [SerializeField] GameObject _winPanel;
 
-    //[Header("RSE")]
+    [Header("RSE")]
+    [SerializeField] RSE_OnAllCoinCollected _rseAllCoinCollected;
+    [SerializeField] RSE_OnLevelFinish _rseOnLevelFinish;
 
     [Header("RSO")]
     [SerializeField] RSO_CurrentCoinHave _rsoCurrentCoinHave;
@@ -25,11 +28,13 @@ public class S_UiManager : MonoBehaviour
     {
         _rsoCurrentCoinHave.onValueChanged += UpdateCoinText;
         _rsoTotalCoinsInArea.onValueChanged += UpdateTotalCoinText;
+        _rseOnLevelFinish.action += Win;
     }
     private void OnDisable()
     {
         _rsoCurrentCoinHave.onValueChanged -= UpdateCoinText;
         _rsoTotalCoinsInArea.onValueChanged -= UpdateTotalCoinText;
+        _rseOnLevelFinish.action -= Win;
     }
     void UpdateCoinText(int coinAmmount)
     {
@@ -40,5 +45,10 @@ public class S_UiManager : MonoBehaviour
     {
         _coinText.text = $"Coin: {_rsoCurrentCoinHave.Value} / {maxAmmount}";
 
+    }
+
+    void Win()
+    {
+        _winPanel.SetActive(true);
     }
 }

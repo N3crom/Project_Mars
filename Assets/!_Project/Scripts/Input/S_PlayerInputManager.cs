@@ -42,22 +42,22 @@ public class S_PlayerInputManager : MonoBehaviour
         {
             if (inputValue.x > 0)
             {
-                _rseOnPlayerInputMove.RaiseEvent(Direction.Right);
+                _rseOnPlayerInputMove.RaiseEvent(Vector2Int.right);
             }
             else
             {
-                _rseOnPlayerInputMove.RaiseEvent(Direction.Left);
+                _rseOnPlayerInputMove.RaiseEvent(Vector2Int.left);
             }
         }
         else
         {
             if (inputValue.y > 0)
             {
-                _rseOnPlayerInputMove.RaiseEvent(Direction.Up);
+                _rseOnPlayerInputMove.RaiseEvent(Vector2Int.up);
             }
             else
             {
-                _rseOnPlayerInputMove.RaiseEvent(Direction.Down);
+                _rseOnPlayerInputMove.RaiseEvent(Vector2Int.down);
             }
         }
     }
