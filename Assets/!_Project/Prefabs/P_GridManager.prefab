@@ -83,6 +83,7 @@ MonoBehaviour:
   _ghostPickUpPrefab: {fileID: 3397728495659533650, guid: 229e066f287c7e14f9274c01e9b3f2a6, type: 3}
   _gridParent: {fileID: 3608393882446971908}
   _coinParent: {fileID: 6089846339303654794}
+  _rseOnPlayerSpawned: {fileID: 11400000, guid: f17ec9d279f5b5b43b1d5c26f532cc7c, type: 2}
   _rsoPlayerSpawn: {fileID: 11400000, guid: 19fad6a38acd53a4e8aa2ab4992e525a, type: 2}
   _rsoCurrentGrid: {fileID: 11400000, guid: 3b8e71dc9342ce24d8bcecbb06a9217e, type: 2}
   _ssoLevelGridData: {fileID: 11400000, guid: 2217916f5a0654b43b514a30bdd2750c, type: 2}

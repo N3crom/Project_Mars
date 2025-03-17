@@ -14,7 +14,8 @@ public class S_GridManager : MonoBehaviour
 
     //[Header("References")]
 
-    //[Header("RSE")]
+    [Header("RSE")]
+    public RSE_OnPlayerSpawned _rseOnPlayerSpawned;
 
     [Header("RSO")]
     [SerializeField] private RSO_PlayerSpawn _rsoPlayerSpawn;
@@ -75,7 +76,7 @@ public class S_GridManager : MonoBehaviour
                                          .Where(item => item.TileType == TileType.Spawn)
                                          .ToList();
 
-        _rsoPlayerSpawn.Value = default;
+        //_rsoPlayerSpawn.Value = default;
 
         if (posSpawnPossible.Count == 0)
         {
@@ -87,8 +88,9 @@ public class S_GridManager : MonoBehaviour
         {
             _rsoPlayerSpawn.Value = posSpawnPossible[Random.Range(0, posSpawnPossible.Count)].GridPosition;
             Debug.Log("Spawn tile found");
-
         }
+
+        _rseOnPlayerSpawned.RaiseEvent();
     }
 
     private void CreateTile(Vector2Int position, bool isWalkable, TileType type)

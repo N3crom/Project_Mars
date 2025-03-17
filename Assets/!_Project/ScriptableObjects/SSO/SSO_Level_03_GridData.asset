@@ -14,26 +14,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _value:
   - Position: {x: 3, y: 0}
-    IsWalkable: 0
+    IsWalkable: 1
     Type: 3
     HasCoin: 0
+    HasGhostPickUp: 0
   - Position: {x: 4, y: 0}
     IsWalkable: 1
     Type: 0
     HasCoin: 1
+    HasGhostPickUp: 0
   - Position: {x: 4, y: 1}
     IsWalkable: 1
     Type: 0
     HasCoin: 0
+    HasGhostPickUp: 0
   - Position: {x: 4, y: 3}
     IsWalkable: 1
     Type: 0
     HasCoin: 1
+    HasGhostPickUp: 0
   - Position: {x: 3, y: 3}
     IsWalkable: 1
     Type: 2
     HasCoin: 0
+    HasGhostPickUp: 0
   - Position: {x: 4, y: 2}
     IsWalkable: 1
     Type: 0
     HasCoin: 0
+    HasGhostPickUp: 0

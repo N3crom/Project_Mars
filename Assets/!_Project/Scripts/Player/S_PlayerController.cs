@@ -1,17 +1,25 @@
 using System.Collections;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class S_PlayerController : MonoBehaviour
 {
+    [Header("References")]
+    [SerializeField] private Image _ghostBar;
+
+    [Header("Parameters")]
     [SerializeField] private int baseStamina = 5;
     [SerializeField] private float ghostTime = 2f;
 
+    [Header("RSE")]
+    public RSE_OnPlayerSpawned _rseOnPlayerSpawned;
     [SerializeField] private RSE_OnPlayerInputMove _rseOnPlayerInputMove;
     [SerializeField] private RSE_OnLevelFinish _rseOnLevelFinish;
     [SerializeField] private RSE_OnGhostPickUpCollected _rseOnGhostPickUpCollected;
     [SerializeField] private RSE_OnStaminaDepleted _rseOnStaminaDepleted;
     [SerializeField] private RSE_OnPlayerStuckInsideWall _rseOnPlayerStuckInsideWall;
 
+    [Header("RSO")]
     [SerializeField] private RSO_PlayerSpawn _rsoPlayerSpawn;
     [SerializeField] private RSO_PlayerPosition _rsoPlayerPosition;
     [SerializeField] private RSO_CurrentGrid _rsoCurrentGrid;
@@ -21,14 +29,14 @@ public class S_PlayerController : MonoBehaviour
     private void OnEnable()
     {
         _rseOnPlayerInputMove.action += Move;
-        _rsoPlayerSpawn.onValueChanged += InitialiseSpawnPosition;
+        _rseOnPlayerSpawned.action += InitialiseSpawnPosition;
         _rseOnGhostPickUpCollected.action += OnGhostPickUpCollected;
     }
 
     private void OnDisable()
     {
         _rseOnPlayerInputMove.action -= Move;
-        _rsoPlayerSpawn.onValueChanged -= InitialiseSpawnPosition;
+        _rseOnPlayerSpawned.action -= InitialiseSpawnPosition;
         _rseOnGhostPickUpCollected.action -= OnGhostPickUpCollected;
     }
 
@@ -39,7 +47,7 @@ public class S_PlayerController : MonoBehaviour
 
     private void Move(Vector2Int direction)
     {
-        if (CanMove(direction) || isGhost)
+        if (CanMove(direction) || isGhost && _rsoCurrentPlayerStamina.Value > 0 && _rsoCurrentGrid.Value.ContainsKey(_rsoPlayerPosition.Value + direction))
         {
             _rsoPlayerPosition.Value += direction;
             transform.position += new Vector3(direction.x, direction.y, 0);
@@ -58,9 +66,7 @@ public class S_PlayerController : MonoBehaviour
 
     private bool CanMove(Vector2Int direction)
     {
-        return _rsoCurrentGrid.Value.ContainsKey(_rsoPlayerPosition.Value + direction)
-            && _rsoCurrentGrid.Value[_rsoPlayerPosition.Value + direction].IsWalkable
-            && _rsoCurrentPlayerStamina.Value > 0;
+        return _rsoCurrentGrid.Value[_rsoPlayerPosition.Value + direction].IsWalkable;
     }
 
     private bool ReachedExitWithAllCoinsCollected()
@@ -73,9 +79,9 @@ public class S_PlayerController : MonoBehaviour
         return _rsoCurrentPlayerStamina.Value <= 0;
     }
 
-    private void InitialiseSpawnPosition(Vector2Int position)
+    private void InitialiseSpawnPosition()
     {
-        _rsoPlayerPosition.Value = position;
+        _rsoPlayerPosition.Value = _rsoPlayerSpawn.Value;
         transform.position = new Vector3(_rsoPlayerPosition.Value.x, _rsoPlayerPosition.Value.y, 0);
     }
 
