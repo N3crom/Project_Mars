@@ -18,6 +18,7 @@ public class S_UiManager : MonoBehaviour
     [SerializeField] RSE_OnStaminaDepleted _rseOnStaminaDepleted;
     [SerializeField] RSE_LoadMainMenu _rseLoadMainMenu;
     [SerializeField] RSE_LoadNextLevel _rseLoadNextLevel;
+    [SerializeField] RSE_OnPlayerStuckInsideWall _rseOnPlayerStuckInsideWall;
 
     [Header("RSO")]
     [SerializeField] RSO_CurrentCoinHave _rsoCurrentCoinHave;
@@ -38,6 +39,7 @@ public class S_UiManager : MonoBehaviour
         _rsoCurrentPlayerStamina.onValueChanged += UpdateStaminaText;
         _rseOnLevelFinish.action += Win;
         _rseOnStaminaDepleted.action += Lose;
+        _rseOnPlayerStuckInsideWall.action += Lose;
     }
     private void OnDisable()
     {
@@ -46,6 +48,7 @@ public class S_UiManager : MonoBehaviour
         _rsoCurrentPlayerStamina.onValueChanged -= UpdateStaminaText;
         _rseOnLevelFinish.action -= Win;
         _rseOnStaminaDepleted.action -= Lose;
+        _rseOnPlayerStuckInsideWall.action -= Lose;
     }
     void UpdateCoinText(int coinAmmount)
     {
