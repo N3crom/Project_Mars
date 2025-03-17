@@ -8,6 +8,7 @@ public class S_GridManager : MonoBehaviour
     [SerializeField] private Vector2Int _gridSize;
     [SerializeField] private GameObject _tilePrefab;
     [SerializeField] private GameObject _coinPrefab;
+    [SerializeField] private GameObject _ghostPickUpPrefab;
     [SerializeField] private Transform _gridParent;
     [SerializeField] private Transform _coinParent;
 
@@ -48,6 +49,11 @@ public class S_GridManager : MonoBehaviour
             if(tileData.HasCoin)
             {
                 GameObject coinObj = Instantiate(_coinPrefab, new Vector3(tileData.Position.x, tileData.Position.y, 0), Quaternion.identity, _coinParent);
+            }
+
+            if (tileData.HasGhostPickUp)
+            {
+                GameObject ghostPickUpObj = Instantiate(_ghostPickUpPrefab, new Vector3(tileData.Position.x, tileData.Position.y, 0), Quaternion.identity, _coinParent);
             }
         }
 
@@ -103,4 +109,5 @@ public class TileData
     public bool IsWalkable = true;
     public TileType Type;
     public bool HasCoin;
+    public bool HasGhostPickUp;
 }

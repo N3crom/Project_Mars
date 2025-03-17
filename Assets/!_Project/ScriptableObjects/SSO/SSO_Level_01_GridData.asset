@@ -17,39 +17,49 @@ MonoBehaviour:
     IsWalkable: 1
     Type: 0
     HasCoin: 0
+    HasGhostPickUp: 1
   - Position: {x: 1, y: 0}
     IsWalkable: 1
     Type: 0
     HasCoin: 0
+    HasGhostPickUp: 0
   - Position: {x: 2, y: 0}
     IsWalkable: 1
     Type: 0
     HasCoin: 0
+    HasGhostPickUp: 0
   - Position: {x: 3, y: 0}
     IsWalkable: 1
     Type: 2
     HasCoin: 0
+    HasGhostPickUp: 0
   - Position: {x: 4, y: 0}
     IsWalkable: 1
     Type: 0
     HasCoin: 1
+    HasGhostPickUp: 0
   - Position: {x: 0, y: 1}
     IsWalkable: 1
     Type: 0
     HasCoin: 0
+    HasGhostPickUp: 0
   - Position: {x: 0, y: 2}
     IsWalkable: 1
     Type: 0
     HasCoin: 1
+    HasGhostPickUp: 0
   - Position: {x: 0, y: 3}
     IsWalkable: 1
     Type: 0
     HasCoin: 1
+    HasGhostPickUp: 0
   - Position: {x: 1, y: 3}
     IsWalkable: 1
     Type: 0
     HasCoin: 1
+    HasGhostPickUp: 0
   - Position: {x: 2, y: 3}
     IsWalkable: 1
     Type: 3
     HasCoin: 0
+    HasGhostPickUp: 0
