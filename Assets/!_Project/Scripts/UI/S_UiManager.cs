@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class S_UiManager : MonoBehaviour
 {
@@ -9,10 +10,14 @@ public class S_UiManager : MonoBehaviour
     [SerializeField] TextMeshProUGUI _coinText;
     [SerializeField] TextMeshProUGUI _staminaText;
     [SerializeField] GameObject _winPanel;
+    [SerializeField] GameObject _losePanel;
 
     [Header("RSE")]
     [SerializeField] RSE_OnAllCoinCollected _rseAllCoinCollected;
     [SerializeField] RSE_OnLevelFinish _rseOnLevelFinish;
+    [SerializeField] RSE_OnStaminaDepleted _rseOnStaminaDepleted;
+    [SerializeField] RSE_LoadMainMenu _rseLoadMainMenu;
+    [SerializeField] RSE_LoadNextLevel _rseLoadNextLevel;
 
     [Header("RSO")]
     [SerializeField] RSO_CurrentCoinHave _rsoCurrentCoinHave;
@@ -32,6 +37,7 @@ public class S_UiManager : MonoBehaviour
         _rsoTotalCoinsInArea.onValueChanged += UpdateTotalCoinText;
         _rsoCurrentPlayerStamina.onValueChanged += UpdateStaminaText;
         _rseOnLevelFinish.action += Win;
+        _rseOnStaminaDepleted.action += Lose;
     }
     private void OnDisable()
     {
@@ -39,6 +45,7 @@ public class S_UiManager : MonoBehaviour
         _rsoTotalCoinsInArea.onValueChanged -= UpdateTotalCoinText;
         _rsoCurrentPlayerStamina.onValueChanged -= UpdateStaminaText;
         _rseOnLevelFinish.action -= Win;
+        _rseOnStaminaDepleted.action -= Lose;
     }
     void UpdateCoinText(int coinAmmount)
     {
@@ -55,9 +62,23 @@ public class S_UiManager : MonoBehaviour
         _coinText.text = $"Coin: {_rsoCurrentCoinHave.Value} / {maxAmmount}";
 
     }
+    void Lose()
+    {
+        _losePanel.SetActive(true);
+    }
 
     void Win()
     {
         _winPanel.SetActive(true);
+    }
+
+    public void OnMainMenuButtonClicked()
+    {
+        _rseLoadMainMenu.RaiseEvent();
+    }
+
+    public void OnContinueButtonClicked()
+    {
+        _rseLoadNextLevel.RaiseEvent();
     }
 }

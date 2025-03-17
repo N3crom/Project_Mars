@@ -40,13 +40,17 @@ public class S_PlayerController : MonoBehaviour
 
     void Move(Vector2Int direction)
     {
-        if (_rsoCurrentGrid.Value.ContainsKey(_rsoPlayerPosition.Value + direction) && _rsoCurrentGrid.Value[_rsoPlayerPosition.Value + direction].IsWalkable == true)
+        if (
+            _rsoCurrentGrid.Value.ContainsKey(_rsoPlayerPosition.Value + direction)
+            && _rsoCurrentGrid.Value[_rsoPlayerPosition.Value + direction].IsWalkable
+            && _rsoCurrentPlayerStamina.Value > 0
+            )
         {
             _rsoPlayerPosition.Value += direction;
             transform.position += new Vector3(direction.x, direction.y, 0);
             _rsoCurrentPlayerStamina.Value--;
 
-            if (_rsoCurrentGrid.Value[_rsoPlayerPosition.Value].TileType == TileType.Exit && _rsoAllCoinCollected == true)
+            if (_rsoCurrentGrid.Value[_rsoPlayerPosition.Value].TileType == TileType.Exit && _rsoAllCoinCollected.Value)
             {
                 _rseOnLevelFinish.RaiseEvent();
             }
