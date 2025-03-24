@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 5274450902583180838}
   m_Layer: 9
   m_Name: P_GhostPickUp
-  m_TagString: Coin
+  m_TagString: Collectible
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

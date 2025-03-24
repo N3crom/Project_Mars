@@ -49,7 +49,12 @@ public class S_GridManager : MonoBehaviour
 
             if(tileData.HasCoin)
             {
-                GameObject coinObj = Instantiate(_coinPrefab, new Vector3(tileData.Position.x, tileData.Position.y, 0), Quaternion.identity, _coinParent);
+                int rnd = Random.Range(0, 2);
+                if(rnd == 1)
+                {
+                    GameObject coinObj = Instantiate(_coinPrefab, new Vector3(tileData.Position.x, tileData.Position.y, 0), Quaternion.identity, _coinParent);
+                }
+
             }
 
             if (tileData.HasGhostPickUp)

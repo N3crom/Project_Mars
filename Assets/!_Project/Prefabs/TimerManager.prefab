@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2279085024834196436
+--- !u!1 &1248697824713122584
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,22 +8,22 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2087541164127854036}
-  - component: {fileID: 9051874924856950045}
+  - component: {fileID: 3702715435238088287}
+  - component: {fileID: 4539522677443114998}
   m_Layer: 0
-  m_Name: P_PlayerInputManager
+  m_Name: TimerManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2087541164127854036
+--- !u!4 &3702715435238088287
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2279085024834196436}
+  m_GameObject: {fileID: 1248697824713122584}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
@@ -32,17 +32,18 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9051874924856950045
+--- !u!114 &4539522677443114998
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2279085024834196436}
+  m_GameObject: {fileID: 1248697824713122584}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f18ba5a437c000a4b95f96d35421071a, type: 3}
+  m_Script: {fileID: 11500000, guid: 823e7fe0906def74b846efc2e26ee697, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeThreshold: 50
-  _rseOnPlayerInputMove: {fileID: 11400000, guid: b1d4aedc541912b4fa9db7f3ed59a559, type: 2}
+  timer: 15
+  rSE_LoadMainMenu: {fileID: 11400000, guid: e71a1014ec50c5b448cbdb9b28f30ff9, type: 2}
+  rSE_UpdateTimer: {fileID: 11400000, guid: eba3ad1d11015954ba836053467466ab, type: 2}

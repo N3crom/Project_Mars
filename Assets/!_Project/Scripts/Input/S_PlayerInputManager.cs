@@ -1,10 +1,13 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
 public class S_PlayerInputManager : MonoBehaviour
 {
-    //[Header("Parameters")]
-
+    [Header("Parameters")]
+    private Vector2 touchStartPos;
+    private Vector2 touchEndPos;
+    [SerializeField] private float swipeThreshold;
     //[Header("References")]
 
     [Header("RSE")]
@@ -33,7 +36,12 @@ public class S_PlayerInputManager : MonoBehaviour
     {
         _playerInputActions.Disable();
     }
+    private void Update()
+    {
+        SwipeDirection();
+    }
 
+    // If you want Keyboard Input
     void DirectionWanted(InputAction.CallbackContext ctx)
     {
         Vector2 inputValue = ctx.ReadValue<Vector2>().normalized;
@@ -58,6 +66,59 @@ public class S_PlayerInputManager : MonoBehaviour
             else
             {
                 _rseOnPlayerInputMove.RaiseEvent(Vector2Int.down);
+            }
+        }
+    }
+
+    void SwipeDirection()
+    {
+        //For mobile device
+
+        //if (Input.touchCount > 0)
+        //{
+        //    Touch touch = Input.GetTouch(0);
+        //    if(touch.phase == UnityEngine.TouchPhase.Began)
+        //    {
+        //        touchStartPos = touch.position;
+        //    }
+        //    else if(touch.phase == UnityEngine.TouchPhase.Ended)
+        //    {
+        //        touchEndPos = touch.position;
+        //        DetectSwipe();
+        //    }
+        //}
+        if (Input.GetMouseButtonDown(0))
+        {
+            touchStartPos = Input.mousePosition;
+        }
+        else if (Input.GetMouseButtonUp(0))
+        {
+            touchEndPos = Input.mousePosition;
+            DetectSwipe();
+        }
+    }
+
+    private void DetectSwipe()
+    {
+        Vector2 swipeDirection = touchEndPos - touchStartPos;
+        if(swipeDirection.magnitude > swipeThreshold)
+        {
+            float angle = Mathf.Atan2(swipeDirection.y, swipeDirection.x) * Mathf.Rad2Deg;
+            if(angle >= -45 && angle < 45)
+            {
+                _rseOnPlayerInputMove.RaiseEvent(Vector2Int.right);
+            }
+            else if(angle >= 45 && angle < 135)
+            {
+                _rseOnPlayerInputMove.RaiseEvent(Vector2Int.up);
+            }
+            else if(angle >=  -135 && angle < -45)
+            {
+                _rseOnPlayerInputMove.RaiseEvent(Vector2Int.down);
+            }
+            else
+            {
+                _rseOnPlayerInputMove.RaiseEvent(Vector2Int.left);
             }
         }
     }

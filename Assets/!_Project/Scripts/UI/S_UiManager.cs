@@ -9,6 +9,7 @@ public class S_UiManager : MonoBehaviour
     [Header("References")]
     [SerializeField] TextMeshProUGUI _coinText;
     [SerializeField] TextMeshProUGUI _staminaText;
+    [SerializeField] TextMeshProUGUI _timerText;
     [SerializeField] GameObject _winPanel;
     [SerializeField] GameObject _losePanel;
 
@@ -19,6 +20,7 @@ public class S_UiManager : MonoBehaviour
     [SerializeField] RSE_LoadMainMenu _rseLoadMainMenu;
     [SerializeField] RSE_LoadNextLevel _rseLoadNextLevel;
     [SerializeField] RSE_OnPlayerStuckInsideWall _rseOnPlayerStuckInsideWall;
+    [SerializeField] RSE_UpdateTimer _rseUpdateTimer;
 
     [Header("RSO")]
     [SerializeField] RSO_CurrentCoinHave _rsoCurrentCoinHave;
@@ -37,6 +39,7 @@ public class S_UiManager : MonoBehaviour
         _rsoCurrentCoinHave.onValueChanged += UpdateCoinText;
         _rsoTotalCoinsInArea.onValueChanged += UpdateTotalCoinText;
         _rsoCurrentPlayerStamina.onValueChanged += UpdateStaminaText;
+        _rseUpdateTimer.action += UpdateTimerText;
         _rseOnLevelFinish.action += Win;
         _rseOnStaminaDepleted.action += Lose;
         _rseOnPlayerStuckInsideWall.action += Lose;
@@ -46,6 +49,7 @@ public class S_UiManager : MonoBehaviour
         _rsoCurrentCoinHave.onValueChanged -= UpdateCoinText;
         _rsoTotalCoinsInArea.onValueChanged -= UpdateTotalCoinText;
         _rsoCurrentPlayerStamina.onValueChanged -= UpdateStaminaText;
+        _rseUpdateTimer.action -= UpdateTimerText;
         _rseOnLevelFinish.action -= Win;
         _rseOnStaminaDepleted.action -= Lose;
         _rseOnPlayerStuckInsideWall.action -= Lose;
@@ -64,6 +68,10 @@ public class S_UiManager : MonoBehaviour
     {
         _coinText.text = $"Coin: {_rsoCurrentCoinHave.Value} / {maxAmmount}";
 
+    }
+    void UpdateTimerText(float timerAmmount)
+    {
+        _timerText.text = $"Timer left: {((int)timerAmmount)}s";
     }
     void Lose()
     {
